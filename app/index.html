@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 文件加速</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f6f8fa;
+            color: #24292f;
+            margin: 0;
+            padding: 40px 16px;
+            display: flex;
+            justify-content: center;
+        }
+        .card {
+            width: 100%;
+            max-width: 640px;
+            background: #fff;
+            border: 1px solid #d0d7de;
+            border-radius: 8px;
+            padding: 28px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+        h1 {
+            margin: 0 0 8px;
+            font-size: 22px;
+        }
+        p.desc {
+            margin: 0 0 20px;
+            color: #57606a;
+            font-size: 14px;
+        }
+        form {
+            display: flex;
+            gap: 8px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px 12px;
+            font-size: 14px;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            border-color: #0969da;
+            box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
+        }
+        button {
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            background: #2da44e;
+            border: 1px solid rgba(27, 31, 36, 0.15);
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover { background: #2c974b; }
+        .tips {
+            margin-top: 22px;
+            padding-top: 16px;
+            border-top: 1px solid #d8dee4;
+            font-size: 13px;
+            color: #57606a;
+            line-height: 1.7;
+        }
+        code {
+            background: #eff1f3;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>GitHub 文件加速</h1>
+        <p class="desc">输入 GitHub Release、Archive、Raw、Blob 或 Gist 链接进行加速下载。</p>
+        <form onsubmit="toSubmit(event)">
+            <input id="url" type="text" placeholder="https://github.com/user/repo/releases/..." required>
+            <button type="submit">下载</button>
+        </form>
+        <div class="tips">
+            <div>支持格式示例：</div>
+            <div>• Release / Archive：<code>https://github.com/user/repo/releases/download/...</code></div>
+            <div>• 分支 / Raw 文件：<code>https://raw.githubusercontent.com/user/repo/main/file</code></div>
+            <div>• Git Clone：<code>git clone https://当前域名/https://github.com/user/repo.git</code></div>
+        </div>
+    </div>
+    <script>
+        function toSubmit(e) {
+            e.preventDefault();
+            var val = document.getElementById('url').value.trim();
+            if (val) {
+                window.location.href = '/' + val;
+            }
+        }
+    </script>
+</body>
+</html>
